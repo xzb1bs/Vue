@@ -105,7 +105,7 @@ function toggleComplete(task) {
 
     <input
       v-model="newTaskText"
-      placeholder="Enter a task..."
+      placeholder="Введите задачу..."
     />
     <select v-model="newTaskCategory">
       <option>Работа</option>
@@ -121,7 +121,7 @@ function toggleComplete(task) {
 
     <div class="filters">
       <label>
-        Category:
+        Категория:
         <select v-model="filterCategory">
           <option>Все</option>
           <option>Работа</option>
@@ -135,7 +135,7 @@ function toggleComplete(task) {
       </label>
     </div>
 
-    <p v-if="filteredTasks.length === 0">No tasks</p>
+    <p v-if="filteredTasks.length === 0">Нет задач</p>
 
     <ul>
       <li
