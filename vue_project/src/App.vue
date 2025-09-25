@@ -101,37 +101,37 @@ function toggleComplete(task) {
 
 <template>
   <div class="app">
-    <h1>Task Manager</h1>
+    <h1>Диспетчер задач</h1>
 
     <input
       v-model="newTaskText"
       placeholder="Enter a task..."
     />
     <select v-model="newTaskCategory">
-      <option>Work</option>
-      <option>Study</option>
-      <option>Personal</option>
+      <option>Работа</option>
+      <option>Учёба</option>
+      <option>Персонально</option>
     </select>
     <select v-model="newTaskPriority">
-      <option>Low</option>
-      <option>Medium</option>
-      <option>High</option>
+      <option>Низкий</option>
+      <option>Средний</option>
+      <option>Сложный</option>
     </select>
-    <button @click="addTask">Add Task</button>
+    <button @click="addTask">Добавить задачу</button>
 
     <div class="filters">
       <label>
         Category:
         <select v-model="filterCategory">
-          <option>All</option>
-          <option>Work</option>
-          <option>Study</option>
-          <option>Personal</option>
+          <option>Все</option>
+          <option>Работа</option>
+          <option>Учеба</option>
+          <option>Персонально</option>
         </select>
       </label>
       <label>
         <input type="checkbox" v-model="showOnlyIncomplete" />
-        Show only incomplete
+        Показать только незавершённые
       </label>
     </div>
 
@@ -148,11 +148,11 @@ function toggleComplete(task) {
         <button @click="toggleComplete(task)">
           {{ task.completed ? 'Undo' : 'Complete' }}
         </button>
-        <button @click="deleteTask(task.id)">Delete</button>
+        <button @click="deleteTask(task.id)">Удалить</button>
       </li>
     </ul>
 
-    <p>Incomplete tasks: {{ incompleteCount }}</p>
+    <p>Незавершённые задачи: {{ incompleteCount }}</p>
   </div>
 </template>
 
