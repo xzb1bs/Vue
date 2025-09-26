@@ -48,16 +48,15 @@ header {
 
 
 
-
 <script setup>
 import { ref, computed } from 'vue'
 
 const tasks = ref([]) 
 
 const newTaskText = ref('')
-const newTaskCategory = ref('Work')
-const newTaskPriority = ref('Medium')
-const filterCategory = ref('All')
+const newTaskCategory = ref('Персонально')  
+const newTaskPriority = ref('Низкий')       
+const filterCategory = ref('Все')
 const showOnlyIncomplete = ref(false)
 
 const incompleteCount = computed(() =>
@@ -67,7 +66,7 @@ const incompleteCount = computed(() =>
 const filteredTasks = computed(() => {
   let result = tasks.value
 
-  if (filterCategory.value !== 'All') {
+  if (filterCategory.value !== 'Все') {
     result = result.filter(t => t.category === filterCategory.value)
   }
 
@@ -88,6 +87,8 @@ function addTask() {
     completed: false,
   })
   newTaskText.value = ''
+  newTaskCategory.value = 'Персонально' 
+  newTaskPriority.value = 'Низкий'
 }
 
 function deleteTask(id) {
@@ -108,14 +109,14 @@ function toggleComplete(task) {
       placeholder="Введите задачу..."
     />
     <select v-model="newTaskCategory">
-      <option>Работа</option>
-      <option>Учёба</option>
-      <option>Персонально</option>
+      <option value="Работа">Работа</option>
+      <option value="Учёба">Учёба</option>
+      <option value="Персонально">Персонально</option>
     </select>
     <select v-model="newTaskPriority">
-      <option>Низкий</option>
-      <option>Средний</option>
-      <option>Сложный</option>
+      <option value="Низкий">Низкий</option>
+      <option value="Средний">Средний</option>
+      <option value="Сложный">Сложный</option>
     </select>
     <button @click="addTask">Добавить задачу</button>
 
@@ -123,10 +124,10 @@ function toggleComplete(task) {
       <label>
         Категория:
         <select v-model="filterCategory">
-          <option>Все</option>
-          <option>Работа</option>
-          <option>Учеба</option>
-          <option>Персонально</option>
+          <option value="Все">Все</option>
+          <option value="Работа">Работа</option>
+          <option value="Учёба">Учёба</option>
+          <option value="Персонально">Персонально</option>
         </select>
       </label>
       <label>
@@ -144,7 +145,6 @@ function toggleComplete(task) {
         :class="{ completed: task.completed }"
       >
         {{ task.text }} ({{ task.category }}, {{ task.priority }})
-
         <button @click="toggleComplete(task)">
           {{ task.completed ? 'Undo' : 'Complete' }}
         </button>
@@ -155,6 +155,7 @@ function toggleComplete(task) {
     <p>Незавершённые задачи: {{ incompleteCount }}</p>
   </div>
 </template>
+
 
 <style scoped>
 .app {
