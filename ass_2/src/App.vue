@@ -5,7 +5,7 @@
     <div class="top-bar">
       <input
         v-model="searchQuery"
-        placeholder="Search by title or channel..."
+        placeholder="search by title or channel..."
         class="search"
       />
       <span class="video-count">Found {{ filteredVideos.length }} videos</span>
@@ -13,11 +13,11 @@
 
     <div v-if="loading" class="loading">
       <div class="spinner"></div>
-      <p>Loading videos...</p>
+      <p>loading videos...</p>
     </div>
 
     <div v-else-if="!filteredVideos.length" class="empty">
-      <p>No videos found</p>
+      <p>no videos found</p>
     </div>
 
     <div class="videos">
